@@ -1,0 +1,5 @@
+node_modules   // 설치된 라이브러리 폴더
+dist           // 빌드 결과물
+.vscode        // VS Code 설정 폴더
+.DS_Store      // macOS 자동 생성 파일
+.env*          // 환경변수 파일(.env, .env.local 등)

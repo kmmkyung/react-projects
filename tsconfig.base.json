@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",           // 변환 후 JavaScript 버전 (최신 문법)
+    "module": "ESNext",           // 모듈 시스템 (ESM)
+    "moduleResolution": "Bundler",// 번들러 방식 모듈 해석
+    "jsx": "react-jsx",           // React 17+ JSX 변환 방식
+    "strict": true,               // 엄격한 타입 검사 활성화
+    "noEmit": true,               // 실제 .js 파일 출력 안 함
+    "skipLibCheck": true,         // 라이브러리 타입 검사 생략 (속도 ↑)
+    "types": ["vite/client"]      // Vite 환경 타입 지원
+  }
+}

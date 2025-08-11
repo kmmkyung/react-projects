@@ -1,0 +1,36 @@
+{
+  "name": "react-projects",
+  "private": true,
+  "workspaces": [
+    "projects/*"
+  ],
+  "version": "1.0.0",
+  "description": "react-projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:all": "npm run dev --workspace admin-react",
+    "build:all": "npm run build --workspaces",
+    "lint:all": "npm run lint --workspaces",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmmkyung/react-projects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kmmkyung/react-projects/issues"
+  },
+  "homepage": "https://github.com/kmmkyung/react-projects#readme",
+  "devDependencies": {
+    "eslint": "^9.33.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
+  }
+}
