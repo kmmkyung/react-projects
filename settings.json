@@ -1,0 +1,11 @@
+{
+  "tailwindCSS.experimental.configFile": [
+    "apps/Projektprodukt-collection/tailwind.config.cjs",
+    "apps/Portfolio/tailwind.config.cjs",
+    "apps/DisneyPlus/tailwind.config.cjs"
+  ],
+  "tailwindCSS.classAttributes": ["class", "className"],
+  "editor.quickSuggestions": { "strings": true },
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore"
+}

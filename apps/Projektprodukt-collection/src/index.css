@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'ppSans';
+    src: url('./assets/fonts/PPSans-Bold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ppSans';
+    src: url('./assets/fonts/PPSans-Light.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+@layer components {
+  .ppBold {
+    font-family: 'ppSans';
+    font-weight: 800;
+  }
+  
+  .ppLight {
+    font-family: 'ppSans';
+    font-weight: 400;
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px min(3.5rem, 50px);
+  }
+}
