@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom"
-import Loader from "./components/Loader";
+import Loading from "./components/Loading";
 import Header from "./components/Header";
 
 function App() {
@@ -11,32 +11,32 @@ function App() {
     window.scrollTo(0,0);
   },[pathname])
 
-  useEffect(() => {
-    if (showLoader) {
-      document.body.style.overflow = "hidden";
-    }
-    else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    }
-  }, [showLoader]);
+  // useEffect(() => {
+  //   if (showLoader) {
+  //     document.body.style.overflow = "hidden";
+  //   }
+  //   else {
+  //     document.body.style.overflow = "auto";
+  //   }
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   }
+  // }, [showLoader]);
 
   return (
     <>
-      {showLoader ? 
-        <Loader onFinished={() => setShowLoader(false)} />
+      {/* {showLoader ? 
+        <Loading onFinished={() => setShowLoader(false)} />
         :
         <>
         <Header />
         <Outlet />
         </>
-      }
-      {/* <>
+      } */}
+      <>
       <Header />
       <Outlet />
-      </> */}
+      </>
     </>
   )
 }

@@ -65,22 +65,22 @@ export default function Header() {
     `}>
       <div className="inner">
         <div className="h-20 flex items-center justify-between">
-          <img className="h-4 w-auto cursor-pointer" src={imageData.logo} alt="logo" onClick={()=>navigate('/')} />
+          <img className="h-4 w-auto cursor-pointer" src={imageData.logo[0]} alt="logo" onClick={()=>navigate('/')} />
           <button className="text-base font-ppSans ppBold" onClick={() => {setShowMenu(true);}}>menu</button>
         </div>
       </div>
     </header>
 
     {showMenu && (
-      <div className="fixed top-0 left-0 z-10 w-full h-full bg-neutral-900/50"
+      <div className="fixed top-0 left-0 z-10 w-full h-full bg-neutral-900/50 backdrop-blur-md"
         onClick={(e) => { if (e.target === e.currentTarget) setShowMenu(false); }}/>
       )}
       <nav
-      className={`fixed z-20 top-0 right-0 h-full backdrop-blur-md bg-black/40 transform transition-transform duration-300 ease-in-out *:text-white flex flex-col gap-5 justify-between w-screen md:w-[500px] px-[min(3.5vw,50px)]
+      className={`fixed z-20 top-0 right-0 h-full  bg-black/40 transform transition-transform duration-300 ease-in-out *:text-white flex flex-col gap-5 justify-between w-screen md:w-[500px] px-[min(3.5vw,50px)]
         ${showMenu ? "translate-x-0" : "translate-x-full"}`}
       >
         <button className="h-20 text-right text-base font-ppSans ppBold" onClick={() => setShowMenu(false)}>close</button>
-        <ol className={`flex flex-col gap-5 pb-10 transform transition-all duration-500 ease-out
+        <ol className={`flex flex-col gap-5 pb-10 transform transition-all duration-500 ease-out font-ppSans ppBold
               ${showMenu ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}`}>
           <li><Link to="/About" className="text-5xl hover:underline" onClick={() => setShowMenu(false)}>About</Link></li>
           <li><Link to="/Product" className="text-5xl hover:underline" onClick={() => setShowMenu(false)}>Product</Link></li>
