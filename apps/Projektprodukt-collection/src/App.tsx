@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom"
 import Loading from "./components/Loading";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const { pathname } = useLocation();
@@ -31,11 +32,13 @@ function App() {
         <>
         <Header />
         <Outlet />
+        <Footer/>
         </>
       } */}
       <>
       <Header />
       <Outlet />
+      <Footer/>
       </>
     </>
   )

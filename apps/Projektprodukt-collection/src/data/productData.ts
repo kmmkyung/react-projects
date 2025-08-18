@@ -78,14 +78,15 @@ import sunGlasses11_04 from '../assets/images/product/Sunglasses-11-04.jpg';
 import sunGlasses11_05 from '../assets/images/product/Sunglasses-11-05.jpg';
 import sunGlasses11_06 from '../assets/images/product/Sunglasses-11-06.jpg';
 import sunGlasses11_07 from '../assets/images/product/Sunglasses-11-07.jpg';
+import type { IProduct } from "../type";
 
-export const sunGlassesData = [
+export const sunGlassesData:IProduct[] = [
   {
+    id: 1,
     name: "HM1 CMWG",
     img: `${imageData.product.sunGlasses[0]}`,
     price: 385000,
-    description:
-      "인간다움(Humanity)을 표현하기 위해 공예품과 같이 비정형적 이미지에서 모티브를 얻은 고글형 선글라스.<br/>엔드피스에서 템플까지 균일하지 않은 메탈 컷팅을 하여 비정형의 형태를 표현함으로써 디자인의 개성을 더하였습니다.<br/>코브릿지에도 유연하지 않은 각진 컷팅 디테일을 살려 디자인의 컨셉을 표현하였으며, 브릿지 안쪽에 심볼 로고를 각인하여 브랜드의 정체성을 강화시켰습니다.",
+    description:"인간다움(Humanity)을 표현하기 위해 공예품과 같이 비정형적 이미지에서 모티브를 얻은 고글형 선글라스.\n엔드피스에서 템플까지 균일하지 않은 메탈 컷팅을 하여 비정형의 형태를 표현함으로써 디자인의 개성을 더하였습니다.\n코브릿지에도 유연하지 않은 각진 컷팅 디테일을 살려 디자인의 컨셉을 표현하였으며, 브릿지 안쪽에 심볼 로고를 각인하여 브랜드의 정체성을 강화시켰습니다.",
     colors: { frame: "무광 화이트골드", lens: "블랙 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
@@ -94,14 +95,19 @@ export const sunGlassesData = [
       { code: "CMGR", name: "무광 그레이" },
       { code: "CMBK", name: "무광 블랙" }
     ],
+    size: {
+      frame: ["A - 전면길이 145 mm", "B - 코브릿지 20 mm"],
+      lens:  ["C - 가로길이 55 mm",  "D - 세로길이 35 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses01_01, sunGlasses01_02, sunGlasses01_03, sunGlasses01_04, sunGlasses01_05, sunGlasses01_06, sunGlasses01_07, caseImg]
   },
   {
+    id: 2,
     name: "HM2 CMG",
     img: `${imageData.product.sunGlasses[1]}`,
     price: 325000,
-    description:
-      "비정형적인 안구 디자인으로 작업된 둥근 직사각형의 티타늄 선글라스.<br/>코브릿지의 음각 패턴이 제품의 고급스러움을 강조시키며, 엔드피스와 다리의 연결 부분에 공예품의 악세사리 요소를 적용하여 자연스러우면서도 개성 있는 디자인을 표현하였습니다.",
+    description:"비정형적인 안구 디자인으로 작업된 둥근 직사각형의 티타늄 선글라스.\n코브릿지의 음각 패턴이 제품의 고급스러움을 강조시키며, 엔드피스와 다리의 연결 부분에 공예품의 악세사리 요소를 적용하여 자연스러우면서도 개성 있는 디자인을 표현하였습니다.",
     colors: { frame: "반무광 골드 / 카키", lens: "그린 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
@@ -111,14 +117,19 @@ export const sunGlassesData = [
       { code: "CMBK", name: "반무광 블랙" },
       { code: "CMBK_TL", name: "반무광 블랙 (브라운 변색렌즈)" }
     ],
+    size: {
+      frame: ["A - 전면길이 143 mm", "B - 코브릿지 24 mm"],
+      lens:  ["C - 가로길이 51 mm",  "D - 세로길이 34 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses02_01, sunGlasses02_02, sunGlasses02_03, sunGlasses02_04, sunGlasses02_05, sunGlasses02_06, sunGlasses02_07, caseImg]
   },
   {
+    id: 3,
     name: "HM3 CMG",
     img: `${imageData.product.sunGlasses[2]}`,
     price: 345000,
-    description:
-      "각진 브릿지와 대비되는 부드러운 오벌 형태 안구의 조화로 독특하게 완성된 오벌 티타늄 선글라스.<br/>비정형적인 엔드피스 디테일과 프론트에서 템플로 자연스럽게 이어지는 두 개의 메탈 라인이 하나로 연결되는 형태가 조형적 입체감을 부여하며 아이코닉한 매력을 더합니다.",
+    description:"각진 브릿지와 대비되는 부드러운 오벌 형태 안구의 조화로 독특하게 완성된 오벌 티타늄 선글라스.\n비정형적인 엔드피스 디테일과 프론트에서 템플로 자연스럽게 이어지는 두 개의 메탈 라인이 하나로 연결되는 형태가 조형적 입체감을 부여하며 아이코닉한 매력을 더합니다.",
     colors: { frame: "반무광 골드", lens: "브라운 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
@@ -127,15 +138,20 @@ export const sunGlassesData = [
       { code: "CMWG", name: "반무광 화이트골드" },
       { code: "CMBK", name: "반무광 블랙" }
     ],
+    size: {
+      frame: ["A - 전면길이 145 mm", "B - 코브릿지 22 mm"],
+      lens:  ["C - 가로길이 52 mm",  "D - 세로길이 39 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses03_01, sunGlasses03_02, sunGlasses03_03, sunGlasses03_04, sunGlasses03_05, sunGlasses03_06, sunGlasses03_07, caseImg]
   },
   {
-    name: "HM4 C1",
+    id: 4,
+    name: "HM4 C8",
     img: `${imageData.product.sunGlasses[3]}`,
     price: 285000,
-    description:
-      "곡선의 조화로 이루어진 둥근 직사각형의 아세테이트 선글라스.<br/>브릿지와 안구 가장자리의 섬세한 엣지를 주어 유니크한 개성을 담아냈습니다.",
-    colors: { frame: "블랙", lens: "블랙 렌즈 (자외선 차단 99.9%)" },
+    description:"곡선의 조화로 이루어진 둥근 직사각형의 아세테이트 선글라스.\n브릿지와 안구 가장자리의 섬세한 엣지를 주어 유니크한 개성을 담아냈습니다.",
+    colors: { frame: "레드", lens: "그린 렌즈 (자외선 차단 99.9%)" },
     materials: { overall: "아세테이트" },
     variants: [
       { code: "C1", name: "블랙" },
@@ -144,14 +160,19 @@ export const sunGlassesData = [
       { code: "C8", name: "레드" },
       { code: "C11", name: "화이트" }
     ],
+    size: {
+      frame: ["A - 전면길이 144 mm", "B - 코브릿지 27 mm"],
+      lens:  ["C - 가로길이 48 mm",  "D - 세로길이 33 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses04_01, sunGlasses04_02, sunGlasses04_03, sunGlasses04_04, sunGlasses04_05, sunGlasses04_06, sunGlasses04_07, caseImg]
   },
   {
+    id: 5,
     name: "HM5 C1",
     img: `${imageData.product.sunGlasses[4]}`,
     price: 285000,
-    description:
-      "두께감 있는 사각 아세테이트 선글라스로 존재감이 도드라집니다.<br/>프레임 끝의 라운드 처리와 엣지를 강조한 브릿지가 대조를 이루며 유니크한 룩을 완성합니다.",
+    description:"볼드한 두께감으로 강렬한 인상을 선사하는 직사각형 아세테이트 선글라스.\n프레임 양쪽 끝의 둥근 마감 처리와 엣지가 강조된 브릿지의 대비가 유니크한 룩으로 완성시켰습니다.",
     colors: { frame: "블랙", lens: "블랙 렌즈 (자외선 차단 99.9%)" },
     materials: { overall: "아세테이트" },
     variants: [
@@ -161,14 +182,19 @@ export const sunGlassesData = [
       { code: "C07", name: "라이트 옐로우" },
       { code: "C09", name: "라이트 카키" }
     ],
+    size: {
+      frame: ["A - 전면길이 148 mm", "B - 코브릿지 24 mm"],
+      lens:  ["C - 가로길이 49 mm",  "D - 세로길이 36 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses05_01, sunGlasses05_02, sunGlasses05_03, sunGlasses05_04, sunGlasses05_05, sunGlasses05_06, sunGlasses05_07, caseImg]
   },
   {
+    id: 6,
     name: "HM6 CMBK",
     img: `${imageData.product.sunGlasses[5]}`,
     price: 335000,
-    description:
-      "메탈의 구조적인 디테일이 돋보이는 투브릿지 티타늄 선글라스.<br/>브릿지와 림을 가로지르는 선각 패턴이 모던한 감각을 더하고, 상부 브릿지와 템플의 레트로 글래머러스한 형태가 독특한 캐릭터를 부여합니다.",
+    description:"메탈의 구조적인 디테일이 돋보이는 투브릿지 티타늄 선글라스.\n비정형적인 메탈 구조로 템플 디자인을 표현함으로써 제품의 입체감이 돋보이게 디자인 되었습니다.\n탑 브릿지의 자연스로운 이중 메탈 구조로 조형적인 입체감을 부여하여 유니크한 개성을 더합니다.",
     colors: { frame: "반무광 블랙", lens: "블루 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
@@ -178,14 +204,19 @@ export const sunGlassesData = [
       { code: "C1WG", name: "화이트골드" },
       { code: "C1PG", name: "핑크골드" }
     ],
+    size: {
+      frame: ["A - 전면길이 149 mm", "B - 코브릿지 20 mm"],
+      lens:  ["C - 가로길이 56 mm",  "D - 세로길이 40 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses06_01, sunGlasses06_02, sunGlasses06_03, sunGlasses06_04, sunGlasses06_05, sunGlasses06_06, sunGlasses06_07, caseImg]
   },
   {
+    id: 7,
     name: "HM7 CMPG",
     img: `${imageData.product.sunGlasses[6]}`,
     price: 275000,
-    description:
-      "프로젝트 프로덕트의 현대적 미학으로 완성한 사각형 티타늄 선글라스.<br/>브릿지와 템플의 더블 레이어 메탈 디테일이 깊이를 형성하여 개성을 전달합니다.",
+    description:"덧대어지는 공예품의 비정형적 형상을 프로젝트 프로덕트만의 모던함으로 풀어낸 티타늄 선글라스.\n브릿지와 템플에 이중으로 덧댄 메탈 디테일이 조형적 입체감을 부여하여 추상적인 이미지를 볼륨있는 형태로 자연스레 담아냈습니다.",
     colors: { frame: "무광 핑크골드", lens: "브라운 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
@@ -194,15 +225,20 @@ export const sunGlassesData = [
       { code: "CMPG", name: "무광 핑크골드" },
       { code: "CMBK", name: "무광 블랙" }
     ],
+    size: {
+      frame: ["A - 전면길이 145 mm", "B - 코브릿지 21 mm"],
+      lens:  ["C - 가로길이 54 mm",  "D - 세로길이 44 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses07_01, sunGlasses07_02, sunGlasses07_03, sunGlasses07_04, sunGlasses07_05, sunGlasses07_06, sunGlasses07_07, caseImg]
   },
   {
+    id: 8,
     name: "HM8 C1MG",
     img: `${imageData.product.sunGlasses[7]}`,
     price: 285000,
-    description:
-      "현대적인 감각으로 디자인된 직사각 하프림 선글라스.<br/>브릿지와 템플의 이중 메탈 디테일이 깊이를 더해 개성 있는 미학을 구현합니다.",
-    colors: { frame: "블랙 / 무광 골드", lens: "그린 렌즈 (자외선 차단 99.9%)" },
+    description:"덧대어지는 공예품의 비정형적 형상을 프로젝트 프로덕트만의 모던함으로 풀어낸 티타늄 선글라스.\n브릿지와 템플에 이중으로 덧댄 메탈 디테일이 조형적 입체감을 부여하여 추상적인 이미지를 볼륨있는 형태로 자연스레 담아냈습니다.",
+    colors: { frame: "블랙 / 반무광 골드", lens: "그린 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "아세테이트 / 티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
       { code: "C1WG", name: "블랙 / 화이트골드" },
@@ -210,14 +246,19 @@ export const sunGlassesData = [
       { code: "C1MG", name: "블랙 / 무광 골드" },
       { code: "C1MBK", name: "블랙 / 무광 블랙" }
     ],
+    size: {
+      frame: ["A - 전면길이 149 mm", "B - 코브릿지 23 mm"],
+      lens:  ["C - 가로길이 53 mm",  "D - 세로길이 42 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses08_01, sunGlasses08_02, sunGlasses08_03, sunGlasses08_04, sunGlasses08_05, sunGlasses08_06, sunGlasses08_07, caseImg]
   },
   {
+    id: 9,
     name: "HM9 C1MBK",
     img: `${imageData.product.sunGlasses[8]}`,
     price: 285000,
-    description:
-      "프로젝트 프로덕트의 모던한 감성을 담은 직사각 선글라스.<br/>브릿지와 템플의 이중 메탈 디테일이 깊이감을 주어 차별화된 미학을 완성합니다.",
+    description:"덧대어지는 공예품의 비정형적 형상을 프로젝트 프로덕트만의 모던함으로 풀어낸 티타늄 선글라스.\n브릿지와 템플에 이중으로 덧댄 메탈 디테일이 조형적 입체감을 부여하여 추상적인 이미지를 볼륨있는 형태로 자연스레 담아냈습니다.",
     colors: { frame: "블랙 / 반무광 블랙", lens: "블랙 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "아세테이트 / 티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
@@ -226,14 +267,19 @@ export const sunGlassesData = [
       { code: "C1MG", name: "블랙 / 무광 골드" },
       { code: "C1MBK", name: "블랙 / 반무광 블랙" }
     ],
+    size: {
+      frame: ["A - 전면길이 149 mm", "B - 코브릿지 24 mm"],
+      lens:  ["C - 가로길이 53 mm",  "D - 세로길이 42 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses09_01, sunGlasses09_02, sunGlasses09_03, sunGlasses09_04, sunGlasses09_05, sunGlasses09_06, sunGlasses09_07, caseImg]
   },
   {
+    id: 10,
     name: "HM10 C1",
     img: `${imageData.product.sunGlasses[9]}`,
     price: 275000,
-    description:
-      "간결한 실루엣의 사각 아세테이트 선글라스.<br/>군더더기 없이 뻗어나가는 프레임은 모던한 분위기를 연출하며, 프레임과 템플의 정교하게 깎아낸 엣지와 메탈 심볼로 세련된 디테일을 더했습니다.",
+    description:"간결한 실루엣의 사각 아세테이트 선글라스.\n군더더기 없이 뻗어나가는 프레임은 모던한 분위기를 연출하며, 프레임과 템플의 정교하게 깎아낸 엣지와 메탈 심볼로 세련된 디테일을 더했습니다.",
     colors: { frame: "블랙", lens: "블랙 렌즈 (자외선 차단 99.9%)" },
     materials: { overall: "아세테이트" },
     variants: [
@@ -243,22 +289,32 @@ export const sunGlassesData = [
       { code: "C1FL", name: "블랙" },
       { code: "C1FL(Purple Tint)", name: "블랙" }
     ],
+    size: {
+      frame: ["A - 전면길이 149 mm", "B - 코브릿지 22 mm"],
+      lens:  ["C - 가로길이 51 mm",  "D - 세로길이 40 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses10_01, sunGlasses10_02, sunGlasses10_03, sunGlasses10_04, sunGlasses10_05, sunGlasses10_06, sunGlasses10_07, caseImg]
   },
   {
-    name: "HM11 CMBK",
+    id: 11,
+    name: "HM11 CG",
     img: `${imageData.product.sunGlasses[10]}`,
-    price: 351000, // 해외(영문) 페이지 USD 환산표기가 섞여 있어 국내가와 다를 수 있음
-    description:
-      "메탈 장인의 정교함이 돋보이는 오벌 티타늄 선글라스.<br/>유려한 메탈 라인과 돌출된 브릿지·엔드피스의 강렬한 대비가 고유한 캐릭터를 강조합니다.",
-    colors: { frame: "무광 블랙", lens: "데모 렌즈/혹은 블랙(페이지별 표기 상이)" },
+    price: 335000,
+    description:"비정형적인 메탈 볼륨감을 사용하여 PROJECT12 테마인 인간다움(Humanity)을 표현한 오벌 티타늄 안경.\n볼륨감이 돋보이는 브릿지와 엔드피스-템플의 디테일은 메탈이 덧붙이는 느낌을 주어 독특한 개성을 더하였습니다.",
+    colors: { frame: "골드", lens: "블루 렌즈 (자외선 차단 99.9%)" },
     materials: { front: "티타늄", temple: "티타늄 / 아세테이트" },
     variants: [
       { code: "CG", name: "골드" },
       { code: "CWG", name: "화이트골드" },
       { code: "CMBK", name: "무광 블랙" },
-      { code: "C1PG", name: "핑크골드 / 무광 블랙" }
+      { code: "C1PG", name: "핑크골드" }
     ],
+    size: {
+      frame: ["A - 전면길이 145 mm", "B - 코브릿지 20 mm"],
+      lens:  ["C - 가로길이 52 mm",  "D - 세로길이 38 mm"],
+      leg:   ["E - 다리길이 150 mm"],
+    },
     gallery: [sunGlasses11_01, sunGlasses11_02, sunGlasses11_03, sunGlasses11_04, sunGlasses11_05, sunGlasses11_06, sunGlasses11_07, caseImg]
   }
 ];

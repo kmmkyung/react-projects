@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import imageData from "../data/imageData";
 import { useEffect, useRef, useState } from "react";
+import { useScrollLock } from "../context/ScrollLockProvider";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -8,6 +9,8 @@ export default function Header() {
   const [ isNavVisible, setIsNavVisible ] = useState(true);
   const [ showBlur, setShowBlur] = useState(false);
   const lastScrollY = useRef(0);
+  const headerRef = useRef<HTMLElement>(null);
+  const { isLocked, lock, unlock } = useScrollLock();
 
   function menuVisible(deltaY: number, scrollY: number) {
     if(scrollY <= 100){
@@ -25,22 +28,27 @@ export default function Header() {
     }
   }
 
-  useEffect(()=>{
-    if(showMenu) {
-      document.body.style.overflow = "hidden";
+  useEffect(() => {
+    if (showMenu) {
+      lock();
+      setIsNavVisible(true);
+      setShowBlur(true);
+    } else {
+      unlock();
     }
-    else { document.body.style.overflow = "auto"; }
-    return () => { document.body.style.overflow = "auto"; }
-  },[showMenu])
+    return () => { unlock(); };
+  }, [showMenu]);
 
   useEffect(()=>{
     function onWheel(event: WheelEvent) {
+      if (isLocked || showMenu) return;
       const scrollTop = window.scrollY;
       menuVisible(event.deltaY, scrollTop);
       lastScrollY.current = scrollTop;
     };
 
     function onScroll() {
+      if (isLocked || showMenu) return;
       const scrollTop = window.scrollY;
       const delta = scrollTop - lastScrollY.current;
       if(Math.abs(delta) > 4) {
@@ -59,8 +67,8 @@ export default function Header() {
 
   return(
     <>
-    <header className={`fixed top-0 left-0 w-full z-10 transition-transform duration-300
-      ${isNavVisible ? "translate-y-0" : "-translate-y-full"}
+    <header ref={headerRef} className={`fixed top-0 left-0 w-full z-10 transition-transform duration-300
+      ${isLocked ? "-translate-y-full" : (isNavVisible ? "translate-y-0" : "-translate-y-full")}
       ${showBlur ? "backdrop-blur-md" : "bg-transparent backdrop-blur-0"}
     `}>
       <div className="inner">

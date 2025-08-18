@@ -1,17 +1,25 @@
-import { useEffect, useRef, useState } from "react";
-import Footer from "../components/Footer";
+import { useEffect, useMemo, useRef, useState } from "react";
 import HomeProducts from "../components/HomeProducts";
 import imageData from "../data/imageData";
 import { sunGlassesData } from "../data/productData";
+import ProductModal from "../components/ProductModal";
+import { useScrollLock } from "../context/ScrollLockProvider";
 
 export default function Home(){
+  // 비디오
   const videoSectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [ cursorVideoVisible, setCursorVideoVisible ] = useState(false); // 커서가 비디오 섹션 안에 들어와 있는지 여부
   const [ videoPos, setVideoPos ] = useState({ x: 0, y: 0 }); // 비디오 내 마우스 좌표 
   const [ videoPaused, setVideoPaused ] = useState(true); // video 멈춤 재생 여부
   const [ isTouch, setIsTouch ] = useState(false); // pc mobile 버전 확인
+  // 모달
+  const [ modalState, setModalState ] = useState(false); // modal open 여부
+  const [ selectedId, setSelectedId ] = useState<number | null>(null); // modal 누른 id
 
+  const { lock, unlock } = useScrollLock();
+
+  // 비디오
   function clickVideoPause(){
     if(!videoRef.current) return;
     if(videoRef.current.paused) { videoRef.current.play(); }
@@ -22,7 +30,10 @@ export default function Home(){
   
   function onPause(){ setVideoPaused(true); }
 
-  function cursorMove(event: React.MouseEvent<HTMLElement>) {
+  function cursorMove(event: React.PointerEvent<HTMLElement>) {
+    // pc 마우스가 아니면
+    if (isTouch || event.pointerType !== "mouse") return;
+
     const cursorRadius = 48;
     const videoSection = videoSectionRef.current;
     if(!videoSection) return;
@@ -35,9 +46,6 @@ export default function Home(){
       cursorX >= 0 && cursorX <= videoSectionRect.width && cursorY >= 0 && cursorY <= videoSectionRect.height;
     setCursorVideoVisible(inside);
     if(!inside) return;
-
-    // overflow hidden으로 잘려나가게 하려면
-    // setVideoPos({ x: cursorX, y: cursorY });
     
     // 버튼 전체가 항상 컨테이너 안에 보이게 하려면 
     // 버튼 위치 조정 둘중작은수(둘중큰수)
@@ -46,6 +54,21 @@ export default function Home(){
     setVideoPos({ x: currentX, y: currentY });
   }
 
+  // 모달
+  function modalOpen(id:number){
+    setSelectedId(id);
+    setModalState(true);
+  }
+
+  function modalClose(){
+    setModalState(false);
+  }
+
+  const selectedProduct = useMemo(() => {
+    if (selectedId == null) return null;
+    return sunGlassesData.find(item => item.id === selectedId) ?? null;
+  }, [selectedId]);
+
   // 브라우저 정책에 의해 자동재생이 막힐 수 있어서 초기상태 동기화
   useEffect(()=>{
     setVideoPaused(videoRef.current?.paused ?? true); // 거짓 true, 참 false
@@ -53,30 +76,44 @@ export default function Home(){
 
   // pc mobile 버전 확인
   useEffect(() => {
-    const coarse = window.matchMedia?.("(pointer: coarse)")?.matches;
+    if (typeof window === "undefined") return;
+    const coarse = window.matchMedia?.("(any-pointer: coarse)")?.matches;
     const hasTouch = navigator.maxTouchPoints > 0;
     setIsTouch(Boolean(coarse || hasTouch));
   }, []);
 
+  // 모달열렸을떄 헤더 스크롤 막기
+  useEffect(() => {
+    if (modalState) {
+      lock();
+    } else {
+      unlock();
+    }
+    return () => { unlock(); };
+  }, [modalState]);
+
   return (
     <main>
       <section ref={videoSectionRef} className="w-full h-screen relative overflow-hidden"
-        onMouseMove={cursorMove}
-        onMouseEnter={() => setCursorVideoVisible(true)}
-        onMouseLeave={() => setCursorVideoVisible(false)}
+        onPointerMove={cursorMove}
+        onPointerEnter={() => setCursorVideoVisible(true)}
+        onPointerLeave={() => setCursorVideoVisible(false)}
+        onPointerCancel={() => setCursorVideoVisible(false)}
       >
-        <video ref={videoRef} className="w-full h-full object-cover object-center" src={imageData.video} loop muted autoPlay onPlay={onPlay} onPause={onPause}/>
+        <video ref={videoRef} className="w-full h-full object-cover object-center" src={imageData.video} playsInline loop muted autoPlay onPlay={onPlay} onPause={onPause}/>
         { cursorVideoVisible && !isTouch && 
           <button className="absolute w-24 h-24 rounded-full border-2 border-neutral-500 backdrop-blur-md
             active:scale-95 duration-150 -translate-x-1/2 -translate-y-1/2 transform transition
             text-xs text-neutral-500 text-center flex items-center justify-center"
-          style={{ top: videoPos.y, left: videoPos.x }}
-          onClick={clickVideoPause}>
+            style={{ top: videoPos.y, left: videoPos.x }}
+            aria-label={videoPaused ? "Video Play" : "Video Pause"}
+            onClick={clickVideoPause}>
             {videoPaused ? "Video Play":"Video Pause"}
           </button>
         }
         {isTouch && (
-        <button className="absolute bottom-10 right-10 text-white text-xs size-10 rounded-full border-2 border-white" onClick={clickVideoPause}>
+        <button className="absolute bottom-10 right-10 text-white text-xs size-10 rounded-full border-2 border-white"
+          onClick={clickVideoPause} aria-label={videoPaused ? "Play" : "Pause"}>
           {videoPaused ? "▶" : "❚❚"}
         </button>
       )}
@@ -97,12 +134,12 @@ export default function Home(){
       </section>
       <section>
         <div className="py-[100px] md:py-[200px] not:first:my-[100px] ">
-          { sunGlassesData.map((item, idx) => (
-            <HomeProducts key={idx} name={item.name} img={item.img} />
+          { sunGlassesData.map((item) => (
+            <HomeProducts key={item.id} name={item.name} img={item.img} id={item.id} modalOpen={modalOpen}/>
           ))}
         </div>
+        <ProductModal modalState={modalState} modalClose={modalClose} selectedProduct={selectedProduct}/>
       </section>
-      <Footer/>
     </main>
   )
 }
