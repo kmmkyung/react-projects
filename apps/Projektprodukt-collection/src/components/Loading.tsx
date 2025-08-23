@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "motion/react"
-import imageData from "../data/imageData";
+import mainData from "../data/mainData";
 import { useState } from "react";
 
 export default function Loading({onFinished}:{onFinished: () => void}) {
-  const { product } = imageData;
+  const { product } = mainData;
   const loadingImages = [
     product.glasses[0], product.sunGlasses[0],
     product.glasses[1], product.sunGlasses[1],

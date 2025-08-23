@@ -1,4 +1,4 @@
-import imageData from "../data/imageData";
+import imageData from "../data/mainData";
 
 export default function Footer(){
   return (

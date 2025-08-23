@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import imageData from "../data/imageData";
+import imageData from "../data/mainData";
 import { useEffect, useRef, useState } from "react";
 import { useScrollLock } from "../context/ScrollLockProvider";
 
@@ -91,7 +91,7 @@ export default function Header() {
         <ol className={`flex flex-col gap-5 pb-10 transform transition-all duration-500 ease-out font-ppSans ppBold
               ${showMenu ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}`}>
           <li><Link to="/About" className="text-5xl hover:underline" onClick={() => setShowMenu(false)}>About</Link></li>
-          <li><Link to="/Product" className="text-5xl hover:underline" onClick={() => setShowMenu(false)}>Product</Link></li>
+          <li><Link to="/Products" className="text-5xl hover:underline" onClick={() => setShowMenu(false)}>Product</Link></li>
           <li><Link to="/Collection" className="text-5xl hover:underline" onClick={() => setShowMenu(false)}>Collection</Link></li>
         </ol>
       </nav>

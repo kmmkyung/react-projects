@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import HomeProducts from "../components/HomeProducts";
-import imageData from "../data/imageData";
+import imageData from "../data/mainData";
 import { sunGlassesData } from "../data/productData";
 import ProductModal from "../components/ProductModal";
 import { useScrollLock } from "../context/ScrollLockProvider";
@@ -134,11 +134,13 @@ export default function Home(){
       </section>
       <section>
         <div className="py-[100px] md:py-[200px] not:first:my-[100px] ">
-          { sunGlassesData.map((item) => (
+          { sunGlassesData.filter((mainItem)=> mainItem.mainProduct).map((item) => (
             <HomeProducts key={item.id} name={item.name} img={item.img} id={item.id} modalOpen={modalOpen}/>
           ))}
         </div>
+        {modalState &&
         <ProductModal modalState={modalState} modalClose={modalClose} selectedProduct={selectedProduct}/>
+        }
       </section>
     </main>
   )

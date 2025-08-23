@@ -6,9 +6,10 @@ export interface IProduct{
   description: string;
   colors: { frame: string; lens: string; }
   materials: { front?: string; temple?: string; overall?:string }
-  variants: { code: string; name: string;}[]
+  variants: { code: string; name: string; color:string; thumbnail:string, id:number}[]
   gallery: string[];
   size?: {
     frame: string[]; lens: string[]; leg: string[];
   }
+  mainProduct: boolean;
 }

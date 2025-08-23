@@ -1,20 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "./Home";
-import Product from "./Products";
+import Products from "./Products";
 import About from "./About";
-// import Home from "./Home/Home";
-// import NotFound from "./NotFound/NotFound";
+import NotFound from "./NotFound.tsx";
+import ProductDetail from "./ProductDetail.tsx";
 
 const Router = createBrowserRouter([
   {
     path: "/", element: (<App/>),
     children:[
       {path:'', element: <Home/> },
-      {path:'Project/:projectId', element: <Product/>},
-      {path:'about', element: <About/>},
+      {path:'Products', element: <Products/>},
+      { path: "products/:productName", element: <ProductDetail/> },
+      {path:'About', element: <About/>},
     ],
-    // {/* errorElement: <NotFound/> */}
+    errorElement:  <NotFound/>
   },
 ],
 {/* { basename: import.meta.env.BASE_URL } */}
